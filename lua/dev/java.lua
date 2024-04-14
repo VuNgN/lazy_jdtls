@@ -3,7 +3,7 @@ local jdtls_path = vim.fn.stdpath("data") .. "/lsp_servers/jdtls"
 local path_to_lsp_server = jdtls_path .. "/config_win"
 local path_to_plugins = jdtls_path .. "/plugins/"
 local path_to_jar = path_to_plugins .. "org.eclipse.equinox.launcher_1.6.500.v20230717-2134.jar"
-local lombok_path = path_to_plugins .. "lombok.jar"
+local lombok_path = jdtls_path .. "lombok.jar"
 
 local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle", "settings.gradle" }
 local root_dir = require("jdtls.setup").find_root(root_markers)
@@ -101,6 +101,11 @@ local config = {
           "**/archetype-resources/**",
           "**/META-INF/maven/**",
           "/**/test/**",
+        },
+        jdtls = {
+          androidSupport = {
+            enabled = true,
+          },
         },
       },
       maven = {
